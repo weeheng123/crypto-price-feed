@@ -42,7 +42,7 @@
   background-color: white;
   h2 {
     margin: 0.3rem 0.5rem;
-    font-size: 14px;
+    font-size: 20px;
   }
   .menu {
     padding: 0.5rem;
@@ -50,7 +50,7 @@
     grid-template-columns: auto auto auto;
     width: 100%;
     .category {
-      font-size: 10px;
+      font-size: 15px;
       margin: 0.4rem;
       cursor: pointer;
       &:hover {
@@ -63,7 +63,7 @@
 .search {
   border: 1.5px solid grey;
   height: 45%;
-  width: 14%;
+  width: 9.8%;
   position: absolute;
   overflow-y: auto;
   right: 4rem;
@@ -77,12 +77,14 @@
     .search-result {
       display: flex;
       align-items: center;
-      margin: 0.3rem;
+      margin: 0.8rem;
+      font-size: 20px;
       cursor: pointer;
       &:hover {
         color: blue;
       }
       img {
+        margin-right: 5px;
         width: 15px;
         height: 15px;
       }
