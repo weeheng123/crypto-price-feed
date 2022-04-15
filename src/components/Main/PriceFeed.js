@@ -1,7 +1,10 @@
 import "./Main.scss";
-import React from "react";
+import React, { useRef } from "react";
+// import { Line } from "react-chartjs-2";
+import { Sparklines, SparklinesLine } from "react-sparklines";
 
 function PriceFeed({ priceFeed, capitalizeFirstLetter }) {
+  // const lineRefs = useRef([]);
   return (
     <table>
       <thead>
@@ -22,6 +25,14 @@ function PriceFeed({ priceFeed, capitalizeFirstLetter }) {
       <tbody>
         {priceFeed[0]
           ? priceFeed.map((data, i) => {
+              // var chartData = {
+              //   labels: data.sparkline_in_7d.price,
+              //   datasets: [{ data: data.sparkline_in_7d.price }],
+              // };
+
+              // if (lineRefs?.current[i]) {
+              //   lineRefs?.current[i].chartInstance.destroy();
+              // }
               return (
                 <tr key={"Currency" + i} className="price-row">
                   <td>{i + 1}</td>
@@ -53,7 +64,13 @@ function PriceFeed({ priceFeed, capitalizeFirstLetter }) {
                   </td>
                   <td>${data.total_volume.toLocaleString()}</td>
                   <td>${data.market_cap.toLocaleString()}</td>
-                  <td>Chart</td>
+                  <td>
+                    <div className="chart">
+                      <Sparklines data={data.sparkline_in_7d.price} margin={5}>
+                        <SparklinesLine color="blue" />
+                      </Sparklines>
+                    </div>
+                  </td>
                 </tr>
               );
             })
@@ -63,4 +80,4 @@ function PriceFeed({ priceFeed, capitalizeFirstLetter }) {
   );
 }
 
-export default PriceFeed;
+export default React.memo(PriceFeed);

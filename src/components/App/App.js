@@ -16,21 +16,21 @@ function App() {
 
   async function getPriceFeed(string) {
     setCategory(string);
-    var getApi = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=${string}&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`;
+    var getApi = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=${string}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`;
 
     if (string === "All") {
       getApi =
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d";
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d";
     }
     setPageNumber("1");
     fetchFunction(getApi);
   }
 
   async function changePage(string) {
-    var getApi = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=${category}&order=market_cap_desc&per_page=100&page=${string}&sparkline=false&price_change_percentage=1h%2C24h%2C7d`;
+    var getApi = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=${category}&order=market_cap_desc&per_page=100&page=${string}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`;
 
     if (category === "All") {
-      getApi = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${string}&sparkline=false&price_change_percentage=1h%2C24h%2C7d`;
+      getApi = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${string}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`;
     }
     try {
       await fetchFunction(getApi);
@@ -41,7 +41,7 @@ function App() {
   }
 
   async function fetchSpecificID(string) {
-    var getApi = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${string}&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`;
+    var getApi = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${string}&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`;
 
     try {
       await fetchFunction(getApi);
